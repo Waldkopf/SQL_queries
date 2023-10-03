@@ -1,0 +1,10 @@
+Use books; (use your database name)
+go
+select o.name as objectname,
+       c.name as columnName,
+	   type_name(c.user_type_id) as datatype
+from sys.objects o
+join sys.columns c
+on o.object_id = c.object_id
+where o.name='<table name>’
+and o.schema_id =  schema_id('dbo');
