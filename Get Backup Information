@@ -1,0 +1,5 @@
+select name, physical_name, (8*size/1024) as [Size in MB] from sys.master_files
+where physical_name like '%ldf'
+
+select name, physical_name, (8*size/1024) as [Size in MB] from sys.master_files
+where physical_name like '%mdf'
