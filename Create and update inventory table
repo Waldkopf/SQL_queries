@@ -1,0 +1,7 @@
+--First run
+SELECT distinct OBJECT_NAME(object_id) AS TableName, last_user_update, user_updates, user_seeks, last_user_seek, user_scans, last_user_scan, user_lookups, last_user_lookup, getdate() as DateRecordCreated
+into inventory.activity
+FROM     sys.dm_db_index_usage_stats
+WHERE  (database_id = DB_ID('<database Name'))
+--Subsequent runs - adds rows to existing table
+INSERT INTO inventory.activity(TableName, last_user_update, user_updates, user_seeks, last_user_seek, user_scans, last_user_scan, user_lookups, last_user_lookup,daterecordcreated)
