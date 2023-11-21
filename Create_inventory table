@@ -1,0 +1,44 @@
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [inventory].[DBInventory](
+	[ServerName] [varchar](128) NULL,
+	[CPUs] [int] NULL,
+	[SQL_ServerRAM] [int] NULL,
+	[ServerRAM] [int] NULL,
+	[DBName] [varchar](128) NULL,
+	[DBOwner] [varchar](128) NULL,
+	[CreateDate] [datetime2](7) NULL,
+	[RecoveryModel] [varchar](12) NULL,
+	[Status] [varchar](60) NULL,
+	[CompatibilityLevel] [int] NULL,
+	[DataFileSizeMB] [int] NULL,
+	[LogFileSizeMB] [int] NULL,
+	[DataUsageMB] [int] NULL,
+	[IndexUsageMB] [int] NULL,
+	[SizeMB] [decimal](17, 2) NULL,
+	[Collation] [varchar](60) NULL,
+	[UserCount] [int] NULL,
+	[RoleCount] [int] NULL,
+	[TableCount] [int] NULL,
+	[SPCount] [int] NULL,
+	[UDFCount] [int] NULL,
+	[ViewCount] [int] NULL,
+	[DMLTriggerCount] [int] NULL,
+	[IsCaseSensitive] [bit] NULL,
+	[IsTrustWorthy] [bit] NULL,
+	[LastFullBackupDate] [datetime2](7) NULL,
+	[LastDiffBackupDate] [datetime2](7) NULL,
+	[LastLogBackupDate] [datetime2](7) NULL,
+	[RowAdded] [datetime2](7) NULL
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [inventory].[DBInventory] ADD  DEFAULT (@@servername) FOR [ServerName]
+GO
+
+ALTER TABLE [inventory].[DBInventory] ADD  DEFAULT (db_name()) FOR [DBName]
+GO
